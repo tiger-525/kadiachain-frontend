@@ -34,6 +34,16 @@ export const MINT_CONTRACTS = {
     abi: MintWithToken1ABI,
     currency: 'ARKN'
   },
+  MintWithToken2: {
+    address: "0xc6c113eab9A59Ca9d6278800b9dD49bBfaB130AE",
+    abi: MintWithToken1ABI,
+    currency: 'ETH'
+  },
+  MintWithToken3: {
+    address: "0x91BCA86B65705568eD6eCA1297Ec535138C381EC",
+    abi: MintWithToken1ABI,
+    currency: 'THG'
+  },
   MintWithCoin1: {
     address: "0x968FFe31C1F27C96e27b9223250690ecc9847C3c",
     abi: MintWithCoin1ABI,
@@ -43,7 +53,9 @@ export const MINT_CONTRACTS = {
 
 export const currencies = [
   {symbol: 'KAI', address: '0x0000000000000000000000000000000000000000'},
-  {symbol: 'ARKN', address: '0xc8E2747916BeDcf91C17AB13F2E14E67f6aBe0Db'}
+  {symbol: 'ETH', address: '0x1540020a94aA8bc189aA97639Da213a4ca49d9a7'},
+  {symbol: 'ARKN', address: '0xc8E2747916BeDcf91C17AB13F2E14E67f6aBe0Db'},
+  {symbol: 'THG', address: '0xF0051fd4758147F1749D1696C9266d047B4c43Fa'}
 ];
 export function getCurrencyInfo(_address){
   for (let index = 0; index < currencies.length; index++) {

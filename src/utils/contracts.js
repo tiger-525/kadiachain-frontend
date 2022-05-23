@@ -323,6 +323,90 @@ export async function mintWithToken1(account, price, amount, provider) {
 }
 
 
+/**
+ * NFT MintWithToken2 Management
+ */
+export async function getMintWithToken2Price(provider) {
+    const mintContract = getMintObj('MintWithToken2', provider);
+    if(mintContract) {
+        const cost = await mintContract.COST();        
+        return parseFloat(toEth(cost));
+    }
+    return 0;
+}
+export async function getMintWithToken2Supply(provider) {
+    const mintContract = getMintObj('MintWithToken2', provider);
+    if(mintContract) {
+        const totalSupply = await mintContract.totalSupply();
+        return Number(totalSupply);
+    }
+    return 0;
+}
+export async function mintWithToken2(account, price, amount, provider) {
+    const mintContract = getMintObj('MintWithToken2', provider);
+    const mintContractInfo = getMintInfo('MintWithToken2'); 
+    const currencyInfo = getCurrencyInfoFromSymbol('ETH');    
+    if (!mintContract || !mintContractInfo || !currencyInfo) return false
+    try {
+        let approved = await isTokenApproved(account, price * amount, currencyInfo.address, mintContractInfo.address, provider)
+        if (!approved) {
+            approved = await approveToken(currencyInfo.address, mintContractInfo.address, provider)
+        }
+        if (approved) {
+            const tx = await mintContract.mint(amount)
+            await tx.wait(2);
+            return true
+        }        
+        return false;
+    }catch(e) {
+        console.log(e)
+        return false;
+    }        
+}
+
+
+/**
+ * NFT MintWithToken3 Management
+ */
+export async function getMintWithToken3Price(provider) {
+    const mintContract = getMintObj('MintWithToken3', provider);
+    if(mintContract) {
+        const cost = await mintContract.COST();        
+        return parseFloat(toEth(cost));
+    }
+    return 0;
+}
+export async function getMintWithToken3Supply(provider) {
+    const mintContract = getMintObj('MintWithToken3', provider);
+    if(mintContract) {
+        const totalSupply = await mintContract.totalSupply();
+        return Number(totalSupply);
+    }
+    return 0;
+}
+export async function mintWithToken3(account, price, amount, provider) {
+    const mintContract = getMintObj('MintWithToken3', provider);
+    const mintContractInfo = getMintInfo('MintWithToken3'); 
+    const currencyInfo = getCurrencyInfoFromSymbol('THG');    
+    if (!mintContract || !mintContractInfo || !currencyInfo) return false
+    try {
+        let approved = await isTokenApproved(account, price * amount, currencyInfo.address, mintContractInfo.address, provider)
+        if (!approved) {
+            approved = await approveToken(currencyInfo.address, mintContractInfo.address, provider)
+        }
+        if (approved) {
+            const tx = await mintContract.mint(amount)
+            await tx.wait(2);
+            return true
+        }        
+        return false;
+    }catch(e) {
+        console.log(e)
+        return false;
+    }        
+}
+
+
 
 
 /**
