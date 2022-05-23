@@ -112,7 +112,7 @@ function MintWithCoin1(props) {
                 <Element.MintCard>
                     <Element.ImgSection>
                         <Element.ImgItem>
-                            <Element.Img src="images/mint2.jpg" alt="animation1" />
+                            <Element.Img src="images/mint-coin1.jpg" alt="animation1" />
                         </Element.ImgItem>
                     </Element.ImgSection>
                     <Element.Section>

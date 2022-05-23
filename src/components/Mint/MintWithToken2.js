@@ -114,7 +114,7 @@ function MintWithToken2(props) {
                 <Element.MintCard>
                     <Element.ImgSection>
                         <Element.ImgItem>
-                            <Element.Img src="images/mint1.jpg" alt="animation1" />
+                            <Element.Img src="images/mint-token2.gif" alt="animation1" />
                         </Element.ImgItem>
                     </Element.ImgSection>
                     <Element.Section>
@@ -129,19 +129,19 @@ function MintWithToken2(props) {
                         <Element.InfosBox>
                             <Element.InfoLabel>Minted:</Element.InfoLabel>
                             <Element.InfoValue>
-                                {supply} / 2,940
+                                {supply} / 7,500
                             </Element.InfoValue>
                         </Element.InfosBox>
                         <Element.InfosBox>
                             <Element.InfoLabel>Mint Price:</Element.InfoLabel>
                             <Element.InfoValue>
-                                {price.toLocaleString('en', { maximumFractionDigits: 0 })} {tokenSymbol}
+                                {price.toLocaleString('en', { maximumFractionDigits: 2 })} {tokenSymbol}
                             </Element.InfoValue>
                         </Element.InfosBox>
                         <Element.InfosBox>
                             <Element.InfoLabel>Total Cost:</Element.InfoLabel>
                             <Element.InfoValue>
-                                {(price * numToken).toLocaleString('en', { maximumFractionDigits: 0 })} {tokenSymbol}
+                                {(price * numToken).toLocaleString('en', { maximumFractionDigits: 2 })} {tokenSymbol}
                             </Element.InfoValue>
                         </Element.InfosBox>
 

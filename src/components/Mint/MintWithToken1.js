@@ -114,7 +114,7 @@ function MintWithToken1(props) {
                 <Element.MintCard>
                     <Element.ImgSection>
                         <Element.ImgItem>
-                            <Element.Img src="images/mint1.jpg" alt="animation1" />
+                            <Element.Img src="images/mint-token1.jpg" alt="animation1" />
                         </Element.ImgItem>
                     </Element.ImgSection>
                     <Element.Section>
@@ -129,7 +129,7 @@ function MintWithToken1(props) {
                         <Element.InfosBox>
                             <Element.InfoLabel>Minted:</Element.InfoLabel>
                             <Element.InfoValue>
-                                {supply} / 2,940
+                                {supply} / 2,900
                             </Element.InfoValue>
                         </Element.InfosBox>
                         <Element.InfosBox>

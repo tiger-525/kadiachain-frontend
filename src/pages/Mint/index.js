@@ -14,9 +14,9 @@ function Mint(props) {
 						<Element.Title>Mint NFTs</Element.Title>
 					</GridItem>
 					<Element.MintContainer>	
-						<MintWithToken1/>	
 						<MintWithToken2/>
-						<MintWithToken3/>				
+						<MintWithToken3/>	
+						<MintWithToken1/>			
 						<MintWithCoin1/>												
 					</Element.MintContainer>					
 				</GridRow>				
