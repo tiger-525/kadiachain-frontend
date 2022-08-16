@@ -3,12 +3,14 @@ import { useWeb3React } from '@web3-react/core'
 import axios from 'axios'
 
 import { connectorLocalStorageKey, injectedConnector, walletconnect } from "../../utils/connectors"
+import { useAuthDispatch, logout } from "../../context/authContext";
 import * as S from "./styles";
 import Sidebar from "../Sidebar";
 import { Link } from "react-router-dom";
 
 function TopBar(props) {
   const { account, active, deactivate } = useWeb3React();
+  const dispatch = useAuthDispatch();
   const [userProfile, setUserProfile] = useState(undefined)
   useEffect(() => {
     if (account) {
@@ -25,7 +27,8 @@ function TopBar(props) {
   function signOut() {
     setShowDropDown(false);
     deactivate(injectedConnector)
-    deactivate(walletconnect)    
+    deactivate(walletconnect)
+    logout(dispatch);
     window.localStorage.setItem(connectorLocalStorageKey, "");
   }
 

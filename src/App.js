@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
+import jwt from "jsonwebtoken";
 import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
 import { useWeb3React } from '@web3-react/core'
 
@@ -61,20 +62,29 @@ function App() {
   const { user, token } = useAuthState();
 
   const login = async () => {
-    if (!account || !library) {
+    if(!account || !library) {
       console.log('not connected to wallet')
       return;
     }
-    if (!user) {
+    if(!user || (user && user.address.toLowerCase() != account.toLowerCase())) {
       console.log('fetching user')
       await getUser(dispatch, account);
     }
-    if (!user?.nonce || token) {
-      console.log('nonce is invalid or already logged in')
-      return;
-    }
+    if (token) {
+      jwt.verify(token, '!@#456QWErty', (err, payload) => {
+        if(err) {
+          logout(dispatch)
+        }
+        let address = payload.data;
+        if (address.toLowerCase() !== account.toLowerCase()) {
+          loginUser(dispatch, account, user?.nonce, library.getSigner());
+        }
+      })
+    } else {
+      loginUser(dispatch, account, user?.nonce, library.getSigner())
+    }    
     console.log("login 2")
-    loginUser(dispatch, account, user?.nonce, library.getSigner())
+    
   }
 
   useEffect(() => {

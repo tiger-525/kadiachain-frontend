@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Link, useLocation, useHistory } from "react-router-dom";
 
 import { connectorLocalStorageKey, injectedConnector, walletconnect } from "utils/connectors"
+import { useAuthDispatch, logout } from "../../context/authContext";
 
 import MenuIcon from '@material-ui/icons/Menu';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
@@ -31,6 +32,7 @@ const Navbar = (props) => {
   const history = useHistory()
 
   const { account, active, deactivate } = useWeb3React();
+  const dispatch = useAuthDispatch();
 
   const [openSidebar, setOpenSidebar] = useState(false)
   const [userProfile, setUserProfile] = useState(undefined)
@@ -43,7 +45,8 @@ const Navbar = (props) => {
 
   const signOut = () => {
     deactivate(injectedConnector)
-    deactivate(walletconnect)    
+    deactivate(walletconnect)
+    logout(dispatch);   
     localStorage.setItem(connectorLocalStorageKey, "");
   }
 
