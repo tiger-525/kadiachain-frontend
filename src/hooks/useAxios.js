@@ -22,7 +22,7 @@ export function useAxios() {
   }, error => {
     const { status } = error.response
   
-    if (status === 401 || status === 403 || status === 404) {
+    if (status === 401 || status === 403) {
       logout(dispatch);
     }
   
